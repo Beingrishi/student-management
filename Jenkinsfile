@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Beingrishi/student-management.git'
+                git branch: 'main', credentialsId: 'your-git-creds-id', url: 'https://github.com/Beingrishi/student-management.git'
             }
         }
 
