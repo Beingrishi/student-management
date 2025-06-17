@@ -19,14 +19,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                bat 'mvn clean install'
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('LocalSonar') {
-                    sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner"
+                    bat "${env.SONAR_SCANNER_HOME}\\bin\\sonar-scanner.bat"
                 }
             }
         }
