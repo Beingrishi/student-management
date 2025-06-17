@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.9.1'
-        jdk 'Java 11'
+        maven 'Maven 3.9'
+        jdk 'Java 21'
     }
 
     environment {
@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: 'your-git-creds-id', url: 'https://github.com/your-user/student-management.git'
+                git url: 'https://github.com/Beingrishi/student-management.git'
             }
         }
 
@@ -25,7 +25,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('SonarQube') {
+                withSonarQubeEnv('LocalSonar') {
                     sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner"
                 }
             }
